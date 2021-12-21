@@ -22,7 +22,7 @@ in
         
         [] 'if' then        %"if" statement
             C X1 X2 S3 S4 S5 S6 in 
-            {Comp C S2 S3}
+            C={Comp S2 S3}
             S3='then'|S4
             X1={Stat S4 S5}
             S5='else'|S6
@@ -97,10 +97,10 @@ end
 fun {Fact S1 Sn}
     T|S2=S1 
 in
-    if {IsInt T} orelse {IsIdent T} then
+    if {IsInt T} orelse {IsIdent T} then %if it's an integer or string
         S2=Sn
         T
-    else E S2 S3 in
+    else E S2 S3 in %if it's not, that's because we have parentheses. So, we must parse the expression inside of it
         S1='('|S2
         E={Expr S2 S3}
         S3=')'|Sn
@@ -108,7 +108,7 @@ in
     end
 end
 
-fun {Id S1 Sn} 
+fun {Id S1 Sn} %checks if it's an identifier (string)
     X 
 in 
     S1=X|Sn 
