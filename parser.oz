@@ -22,7 +22,7 @@ in
         
         [] 'if' then        %"if" statement
             C X1 X2 S3 S4 S5 S6 in 
-            C={Comp S2 S3}
+            {Comp C S2 S3}
             S3='then'|S4
             X1={Stat S4 S5}
             S5='else'|S6
